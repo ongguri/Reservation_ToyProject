@@ -34,7 +34,7 @@ public class UserAccount {
 
     @ToString.Exclude
     @OneToMany(mappedBy = "userAccount")
-    private final Set<UserAccount> userAccounts = new LinkedHashSet<>();
+    private final Set<UserReservation> userReservations = new LinkedHashSet<>();
     // 유저에서 접수내역을 참조할 일이 있는지 조금 헷갈림. 일단 양방향 연관관계로 생성.
 
     protected UserAccount() { }  // 코드 밖에서 new 로 생성하지 못하게끔 막음.
