@@ -2,6 +2,7 @@ package com.example.reservation_toyproject.domain;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -33,7 +34,7 @@ public class UserAccount {
     @Setter private String gender;
 
     @ToString.Exclude
-    @OneToMany(mappedBy = "userAccount")
+    @OneToMany(mappedBy = "userAccount", cascade = CascadeType.ALL)
     private final Set<UserReservation> userReservations = new LinkedHashSet<>();
     // 유저에서 접수내역을 참조할 일이 있는지 조금 헷갈림. 일단 양방향 연관관계로 생성.
 
