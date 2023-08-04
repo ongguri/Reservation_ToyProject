@@ -1,6 +1,7 @@
 package com.example.reservation_toyproject.domain;
 
 import java.time.LocalDateTime;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -34,7 +35,7 @@ public class UserReservation {
     @Setter private LocalDateTime resDate;
 
     @Setter @ManyToOne(optional = false) private UserAccount userAccount;
-    @Setter @OneToOne(mappedBy = "userReservation") private HptReception hptReception;
+    @Setter @OneToOne(mappedBy = "userReservation", cascade = CascadeType.ALL) private HptReception hptReception;
 
     protected UserReservation() {}
 
