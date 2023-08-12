@@ -12,26 +12,27 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
-@DisplayName("view 컨트롤러 - 예약 확인")
-@WebMvcTest(UserReservationController.class)
-public class UserReservationControllerTest {
+@DisplayName("view 컨트롤러 - 접수 확인")
+@WebMvcTest(HospitalReceptionController.class)
+public class HospitalReceptionControllerTest {
 
     private final MockMvc mvc;
 
-    public UserReservationControllerTest(@Autowired MockMvc mvc) {
+    public HospitalReceptionControllerTest(@Autowired MockMvc mvc) {
         this.mvc = mvc;
     }
 
-    @DisplayName("[view-GET] 예약 확인 리스트 페이지 - 정상 호출")
+
+    @DisplayName("[view-GET] 예약 상세 페이지 - 정상 호출")
     @Test
-    public void givenNothing_whenRequestingReservationsView_thenReturnsReservationsView() throws Exception {
+    public void givenNothing_whenRequestingReceptionsView_thenReturnsReceptionsView() throws Exception {
         // Given
 
         // When & Then
-        mvc.perform(get("/reservations"))
+        mvc.perform(get("/receptions"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
-                .andExpect(view().name("reservations/index"))
-                .andExpect(model().attributeExists("reservations"));
+                .andExpect(view().name("receptions/index"))
+                .andExpect(model().attributeExists("receptions"));
     }
 }
