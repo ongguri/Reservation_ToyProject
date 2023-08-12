@@ -18,16 +18,16 @@ public class JpaRepositoryTest {
 
     private final UserAccountRepository userAccountRepository;
     private final UserReservationRepository userReservationRepository;
-    private final HptReceptionRepository hptReceptionRepository;
+    private final HospitalReceptionRepository hospitalReceptionRepository;
 
     public JpaRepositoryTest(
         @Autowired UserAccountRepository userAccountRepository,
         @Autowired UserReservationRepository userReservationRepository,
-        @Autowired HptReceptionRepository hptReceptionRepository
+        @Autowired HospitalReceptionRepository hospitalReceptionRepository
     ) {
         this.userAccountRepository = userAccountRepository;
         this.userReservationRepository = userReservationRepository;
-        this.hptReceptionRepository = hptReceptionRepository;
+        this.hospitalReceptionRepository = hospitalReceptionRepository;
     }
 
     @DisplayName("select 테스트")

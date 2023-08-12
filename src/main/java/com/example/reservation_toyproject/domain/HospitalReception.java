@@ -13,7 +13,7 @@ import lombok.ToString;
 @Getter
 @ToString
 @Entity
-public class HptReception {
+public class HospitalReception {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +25,6 @@ public class HptReception {
     @Setter
     @OneToOne(optional = false) private UserReservation userReservation;
 
-    protected HptReception() {}
+    protected HospitalReception() {}
 
 }
