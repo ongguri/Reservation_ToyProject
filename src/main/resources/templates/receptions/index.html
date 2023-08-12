@@ -10,6 +10,65 @@
 
     <header id="header"></header>
 
+    <main>
+        <form>
+            <label for="search-type" hidden>유형</label>
+            <select id="search-type" name="search-type">
+                <option>병원명</option>
+                <option>진료 항목</option>
+                <option>접수 상태</option>
+            </select>
+            <label for="search-value" hidden> 검색어</label>
+            <input id="search-value" type="search" placeholder="검색어 입력" name="search-value">
+            <button type="submit">검색</button>
+        </form>
+
+        <table>
+            <thead>
+            <tr>
+                <th>환자 이름</th>
+                <th>병원명</th>
+                <th>진료 항목</th>
+                <th>접수 상태</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>김동률</td>
+                <td>솔빛소아청소년과의원</td>
+                <td>소아 진료</td>
+                <td>2021-10-22</td>
+            </tr>
+            <tr>
+                <td>박주봉</td>
+                <td>서울소아청소년과의원</td>
+                <td>영유아 검진</td>
+                <td>2022-03-01</td>
+            </tr>
+            <tr>
+                <td>김동률</td>
+                <td>베스트아이들병원</td>
+                <td>소아 진료</td>
+                <td>2023-04-15</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <nav>
+            <table>
+                <tr>
+                    <td>previous</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>next</td>
+                </tr>
+            </table>
+        </nav>
+    </main>
+
     <footer id="footer"></footer>
 
 </body>
