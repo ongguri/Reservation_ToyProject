@@ -20,7 +20,7 @@ public class UserReservationController {
     @GetMapping("/{user-reservation-email}")
     public String reservation(ModelMap map) {
         map.addAttribute("reservation", "reservationData"); // TODO: 나중에 실제 데이터 넣기
-        map.addAttribute("hptReception", "hptReceptionData"); // TODO: 나중에 실제 데이터 넣기
+        map.addAttribute("hospitalReception", "hospitalReceptionData"); // TODO: 나중에 실제 데이터 넣기
 
         return "reservations/detail";
     }

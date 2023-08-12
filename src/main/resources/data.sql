@@ -98,23 +98,23 @@ values ('sgypps6@cpanel.net', 'Oxy Face Wash', 'Crime|Drama|Film-Noir',
 
 
 -- 10 HptReception
-insert into hpt_reception (user_account_email, user_reservation_id)
+insert into hospital_reception (user_account_email, user_reservation_id)
 values ('timpy5@epa.gov', 6);
-insert into hpt_reception (user_account_email, user_reservation_id)
+insert into hospital_reception (user_account_email, user_reservation_id)
 values ('cdockree2@networkadvertising.org', 7);
-insert into hpt_reception (user_account_email, user_reservation_id)
+insert into hospital_reception (user_account_email, user_reservation_id)
 values ('trother9@noaa.gov', 14);
-insert into hpt_reception (user_account_email, user_reservation_id)
+insert into hospital_reception (user_account_email, user_reservation_id)
 values ('kdockseyn@unblog.fr', 2);
-insert into hpt_reception (user_account_email, user_reservation_id)
+insert into hospital_reception (user_account_email, user_reservation_id)
 values ('bfrancom8@weather.com', 5);
-insert into hpt_reception (user_account_email, user_reservation_id)
+insert into hospital_reception (user_account_email, user_reservation_id)
 values ('trother9@noaa.gov', 12);
-insert into hpt_reception (user_account_email, user_reservation_id)
+insert into hospital_reception (user_account_email, user_reservation_id)
 values ('bsimkovicho@booking.com', 3);
-insert into hpt_reception (user_account_email, user_reservation_id)
+insert into hospital_reception (user_account_email, user_reservation_id)
 values ('bfrancom8@weather.com', 10);
-insert into hpt_reception (user_account_email, user_reservation_id)
+insert into hospital_reception (user_account_email, user_reservation_id)
 values ('psimcoel@sciencedirect.com', 11);
-insert into hpt_reception (user_account_email, user_reservation_id)
+insert into hospital_reception (user_account_email, user_reservation_id)
 values ('kiwanczyk0@upenn.edu', 1);

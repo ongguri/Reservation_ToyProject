@@ -8,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.Getter;
@@ -35,7 +34,7 @@ public class UserReservation {
     @Setter private LocalDateTime resDate;
 
     @Setter @ManyToOne(optional = false) private UserAccount userAccount;
-    @Setter @OneToOne(mappedBy = "userReservation", cascade = CascadeType.ALL) private HptReception hptReception;
+    @Setter @OneToOne(mappedBy = "userReservation", cascade = CascadeType.ALL) private HospitalReception hospitalReception;
 
     protected UserReservation() {}
 

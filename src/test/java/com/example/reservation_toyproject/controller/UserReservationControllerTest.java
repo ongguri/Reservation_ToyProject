@@ -47,6 +47,6 @@ public class UserReservationControllerTest {
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
                 .andExpect(view().name("reservations/detail"))
                 .andExpect(model().attributeExists("reservation"))
-                .andExpect(model().attributeExists("hptReception"));
+                .andExpect(model().attributeExists("hospitalReception"));
     }
 }
