@@ -21,7 +21,7 @@ import lombok.ToString;
     @Index(columnList = "txList")
 }) // 추후 검색이 필요한 인덱스는 추가.
 @Entity
-public class UserReservation {
+public class UserReservation extends AuditingFields {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,8 +30,6 @@ public class UserReservation {
     @Setter private String hospitalName;
     @Setter private String txList;
     @Setter private String reservationStatus;
-
-    @Setter private LocalDateTime reservationDate;
 
     @Setter @ManyToOne(optional = false) private UserAccount userAccount;
     @Setter @OneToOne(mappedBy = "userReservation", cascade = CascadeType.ALL) private HospitalReception hospitalReception;

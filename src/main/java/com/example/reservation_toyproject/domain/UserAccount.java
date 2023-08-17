@@ -20,7 +20,7 @@ import lombok.ToString;
     @Index(columnList = "phoneNumber")
 }) // 추후 검색이 필요한 인덱스는 추가.
 @Entity
-public class UserAccount {
+public class UserAccount extends AuditingFields {
 
     @Id
     @Column(length = 50)
