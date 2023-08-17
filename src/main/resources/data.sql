@@ -62,37 +62,37 @@ values ('bsimkovicho@booking.com', 'yG4Y#o@Bd', 'Brendin', '973-116-5511', '254.
 
 
 -- 15 uesrReservation
-insert into user_reservation (user_account_email, hpt_name, tx_list, res_date)
+insert into user_reservation (user_account_email, hospital_name, tx_list, reservation_date)
 values ('kiwanczyk0@upenn.edu', 'Verapamil', 'Drama|War', '2023-02-01 01:23:20');
-insert into user_reservation (user_account_email, hpt_name, tx_list, res_date)
+insert into user_reservation (user_account_email, hospital_name, tx_list, reservation_date)
 values ('kdockseyn@unblog.fr', 'Zosyn', 'Horror', '2023-02-05 15:37:16');
-insert into user_reservation (user_account_email, hpt_name, tx_list, res_date)
+insert into user_reservation (user_account_email, hospital_name, tx_list, reservation_date)
 values ('bsimkovicho@booking.com', 'Dover Aminophen', 'Documentary', '2023-07-27 04:31:50');
-insert into user_reservation (user_account_email, hpt_name, tx_list, res_date)
+insert into user_reservation (user_account_email, hospital_name, tx_list, reservation_date)
 values ('rmoizere@vistaprint.com', 'Lamotrigine', 'Drama', '2023-07-18 15:13:04');
-insert into user_reservation (user_account_email, hpt_name, tx_list, res_date)
+insert into user_reservation (user_account_email, hospital_name, tx_list, reservation_date)
 values ('bfrancom8@weather.com', 'Smart San ES Hand Sanitizer Spray', 'Documentary',
         '2022-11-19 21:48:10');
-insert into user_reservation (user_account_email, hpt_name, tx_list, res_date)
+insert into user_reservation (user_account_email, hospital_name, tx_list, reservation_date)
 values ('timpy5@epa.gov', 'ZYPREXA', 'Mystery|Romance|Thriller', '2023-06-18 16:12:10');
-insert into user_reservation (user_account_email, hpt_name, tx_list, res_date)
+insert into user_reservation (user_account_email, hospital_name, tx_list, reservation_date)
 values ('cdockree2@networkadvertising.org', 'Ramipril', 'Action|Crime|Drama', '2023-07-16 19:27:30');
-insert into user_reservation (user_account_email, hpt_name, tx_list, res_date)
+insert into user_reservation (user_account_email, hospital_name, tx_list, reservation_date)
 values ('bperkisd@blogger.com', 'Levitra', 'Fantasy|Romance', '2023-02-01 19:18:21');
-insert into user_reservation (user_account_email, hpt_name, tx_list, res_date)
+insert into user_reservation (user_account_email, hospital_name, tx_list, reservation_date)
 values ('njindrakk@google.com.br', 'Dexamethasone', 'Action|Drama|War', '2023-06-15 11:43:08');
-insert into user_reservation (user_account_email, hpt_name, tx_list, res_date)
+insert into user_reservation (user_account_email, hospital_name, tx_list, reservation_date)
 values ('bfrancom8@weather.com', 'St. Ives Blemish and Blackhead Control', 'Drama|Film-Noir',
         '2023-03-16 05:46:06');
-insert into user_reservation (user_account_email, hpt_name, tx_list, res_date)
+insert into user_reservation (user_account_email, hospital_name, tx_list, reservation_date)
 values ('psimcoel@sciencedirect.com', 'Lovastatin', 'Comedy', '2022-08-28 21:44:32');
-insert into user_reservation (user_account_email, hpt_name, tx_list, res_date)
+insert into user_reservation (user_account_email, hospital_name, tx_list, reservation_date)
 values ('trother9@noaa.gov', 'Pepcid', 'Animation|Children|Sci-Fi', '2023-03-30 18:23:33');
-insert into user_reservation (user_account_email, hpt_name, tx_list, res_date)
+insert into user_reservation (user_account_email, hospital_name, tx_list, reservation_date)
 values ('abotwood3@foxnews.com', 'Metoprolol succinate', 'Crime|Drama', '2022-12-15 13:10:28');
-insert into user_reservation (user_account_email, hpt_name, tx_list, res_date)
+insert into user_reservation (user_account_email, hospital_name, tx_list, reservation_date)
 values ('trother9@noaa.gov', 'Sinus Relief PE', 'Western', '2023-02-16 21:09:50');
-insert into user_reservation (user_account_email, hpt_name, tx_list, res_date)
+insert into user_reservation (user_account_email, hospital_name, tx_list, reservation_date)
 values ('sgypps6@cpanel.net', 'Oxy Face Wash', 'Crime|Drama|Film-Noir',
         '2023-04-08 08:36:22');
 

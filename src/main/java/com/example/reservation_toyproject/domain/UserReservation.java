@@ -17,7 +17,7 @@ import lombok.ToString;
 @Getter
 @ToString
 @Table(indexes = {
-    @Index(columnList = "hptName"),
+    @Index(columnList = "hospitalName"),
     @Index(columnList = "txList")
 }) // 추후 검색이 필요한 인덱스는 추가.
 @Entity
@@ -27,23 +27,23 @@ public class UserReservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Setter private String hptName;
+    @Setter private String hospitalName;
     @Setter private String txList;
-    @Setter private String resStatus;
+    @Setter private String reservationStatus;
 
-    @Setter private LocalDateTime resDate;
+    @Setter private LocalDateTime reservationDate;
 
     @Setter @ManyToOne(optional = false) private UserAccount userAccount;
     @Setter @OneToOne(mappedBy = "userReservation", cascade = CascadeType.ALL) private HospitalReception hospitalReception;
 
     protected UserReservation() {}
 
-    private UserReservation(String hptName, String txList) {
-        this.hptName = hptName;
+    private UserReservation(String hospitalName, String txList) {
+        this.hospitalName = hospitalName;
         this.txList = txList;
     }
 
-    public static UserReservation of(String hptName, String txList) {
-        return new UserReservation(hptName, txList);
+    public static UserReservation of(String hospitalName, String txList) {
+        return new UserReservation(hospitalName, txList);
     }
 }
