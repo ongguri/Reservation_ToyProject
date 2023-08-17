@@ -36,12 +36,13 @@ public class UserReservation extends AuditingFields {
 
     protected UserReservation() {}
 
-    private UserReservation(String hospitalName, String txList) {
+    private UserReservation(UserAccount userAccount, String hospitalName, String txList) {
+        this.userAccount = userAccount;
         this.hospitalName = hospitalName;
         this.txList = txList;
     }
 
-    public static UserReservation of(String hospitalName, String txList) {
-        return new UserReservation(hospitalName, txList);
+    public static UserReservation of(UserAccount userAccount, String hospitalName, String txList) {
+        return new UserReservation(userAccount, hospitalName, txList);
     }
 }

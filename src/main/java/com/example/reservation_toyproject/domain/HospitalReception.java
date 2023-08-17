@@ -27,4 +27,12 @@ public class HospitalReception {
 
     protected HospitalReception() {}
 
+    private HospitalReception(UserAccount userAccount, UserReservation userReservation) {
+        this.userAccount = userAccount;
+        this.userReservation = userReservation;
+    }
+
+    public static HospitalReception of(UserAccount userAccount, UserReservation userReservation) {
+        return new HospitalReception(userAccount, userReservation);
+    }
 }
