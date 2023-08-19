@@ -1,15 +1,8 @@
 package com.example.reservation_toyproject.domain;
 
 import java.time.LocalDateTime;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Index;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -27,22 +20,23 @@ public class UserReservation extends AuditingFields {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Setter private String hospitalName;
-    @Setter private String txList;
-    @Setter private String reservationStatus;
+    @Setter @Column(nullable = false) private String hospitalName;
+    @Setter @Column(nullable = false) private String txList;
+    @Setter @Column(nullable = false) private String reservationStatus;
 
     @Setter @ManyToOne(optional = false) private UserAccount userAccount;
     @Setter @OneToOne(mappedBy = "userReservation", cascade = CascadeType.ALL) private HospitalReception hospitalReception;
 
     protected UserReservation() {}
 
-    private UserReservation(UserAccount userAccount, String hospitalName, String txList) {
+    private UserReservation(UserAccount userAccount, String hospitalName, String txList, String reservationStatus) {
         this.userAccount = userAccount;
         this.hospitalName = hospitalName;
         this.txList = txList;
+        this.reservationStatus = reservationStatus;
     }
 
-    public static UserReservation of(UserAccount userAccount, String hospitalName, String txList) {
-        return new UserReservation(userAccount, hospitalName, txList);
+    public static UserReservation of(UserAccount userAccount, String hospitalName, String txList, String reservationStatus) {
+        return new UserReservation(userAccount, hospitalName, txList, reservationStatus);
     }
 }
