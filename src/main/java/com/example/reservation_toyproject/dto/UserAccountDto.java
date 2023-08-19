@@ -39,6 +39,19 @@ public class UserAccountDto {
         return new UserAccountDto(email, password, name, phoneNumber, birthday, gender, createdAt, modifiedAt);
     }
 
+    public static UserAccountDto from(UserAccount entity) {
+        return new UserAccountDto(
+                entity.getEmail(),
+                entity.getPassword(),
+                entity.getName(),
+                entity.getPhoneNumber(),
+                entity.getBirthday(),
+                entity.getGender(),
+                entity.getCreatedAt(),
+                entity.getModifiedAt()
+        );
+    }
+
     public UserAccount toEntity() {
         return UserAccount.of(
                 email,
