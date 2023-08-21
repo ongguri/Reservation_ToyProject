@@ -11,7 +11,10 @@
 </head>
 <body>
 
-    <header id="header"></header>
+    <header id="header">
+        헤더 영역
+        <hr/>
+    </header>
 
     <main class="container">
         <div class="row">
@@ -51,23 +54,23 @@
             </div>
         </div>
 
-        <table class="table">
+        <table class="table" id="userReservation-table">
             <thead>
             <tr>
-                <th class="col-3">환자명</th>
-                <th>병원명</th>
-                <th>진료 항목</th>
-                <th>접수 시간</th>
-                <th>접수 상태</th>
+                <th class="name col-3">환자명</th>
+                <th class="hospital-name">병원명</th>
+                <th class="tx-list">진료 항목</th>
+                <th class="created-at">접수 시간</th>
+                <th class="reservation-status">접수 상태</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td>김동률</td>
-                <td>솔빛소아청소년과의원</td>
-                <td>소아 진료</td>
-                <td>2021-10-22</td>
-                <td>접수 대기</td>
+                <td class="name">김동률</td>
+                <td class="hospital-name">솔빛소아청소년과의원</td>
+                <td class="tx-list">소아 진료</td>
+                <td class="created-at"><time>2021-10-22</time></td>
+                <td class="reservation-status">접수 대기</td>
             </tr>
             <tr>
                 <td>박주봉</td>
@@ -104,7 +107,10 @@
         </nav>
     </main>
 
-    <footer id="footer"></footer>
+    <footer id="footer">
+        <hr/>
+        푸터 영역
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
