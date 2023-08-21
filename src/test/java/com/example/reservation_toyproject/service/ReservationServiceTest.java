@@ -4,7 +4,7 @@ import com.example.reservation_toyproject.domain.UserAccount;
 import com.example.reservation_toyproject.domain.UserReservation;
 import com.example.reservation_toyproject.domain.type.SearchType;
 import com.example.reservation_toyproject.dto.UserAccountDto;
-import com.example.reservation_toyproject.dto.UserReservationDto;
+import com.example.reservation_toyproject.dto.ReservationDto;
 import com.example.reservation_toyproject.repository.HospitalReceptionRepository;
 import com.example.reservation_toyproject.repository.UserReservationRepository;
 import org.junit.jupiter.api.DisplayName;
@@ -22,7 +22,6 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.*;
 
@@ -43,7 +42,7 @@ class ReservationServiceTest {
         given(userReservationRepository.findAll(pageable)).willReturn(Page.empty());
 
         // When
-        Page<UserReservationDto> userReservation = sut.searchUserReservation(null, null, pageable);
+        Page<ReservationDto> userReservation = sut.searchUserReservation(null, null, pageable);
 
         // Then
         assertThat(userReservation).isEmpty();
@@ -60,7 +59,7 @@ class ReservationServiceTest {
         given(userReservationRepository.findByUserAccount_EmailContaining(searchKeyword, pageable)).willReturn(Page.empty());
 
         // When
-        Page<UserReservationDto> userReservation = sut.searchUserReservation(searchType, searchKeyword, pageable);
+        Page<ReservationDto> userReservation = sut.searchUserReservation(searchType, searchKeyword, pageable);
 
         // Then
         assertThat(userReservation).isEmpty();
@@ -76,7 +75,7 @@ class ReservationServiceTest {
         given(userReservationRepository.findById(userReservationId)).willReturn(Optional.of(reservation));
 
         // When
-        UserReservationDto dto = sut.getUserReservation(userReservationId);
+        ReservationDto dto = sut.getUserReservation(userReservationId);
 
         // Then
         assertThat(dto)
@@ -107,7 +106,7 @@ class ReservationServiceTest {
     @Test
     void givenReservationInfo_whenSavingReservation_thenSaveReservation() {
         // given
-        UserReservationDto dto = createUserReservationDto();
+        ReservationDto dto = createUserReservationDto();
         given(userReservationRepository.save(any(UserReservation.class))).willReturn(createUserReservation());
 
         // when
@@ -122,7 +121,7 @@ class ReservationServiceTest {
     void givenModifiedReservationInfo_whenUpdatingReservation_thenUpdateReservation() {
         // given
         UserReservation userReservation = createUserReservation();
-        UserReservationDto dto = createUserReservationDto("동탄소아과", "소아 진료", "접수 완료");
+        ReservationDto dto = createUserReservationDto("동탄소아과", "소아 진료", "접수 완료");
         given(userReservationRepository.getReferenceById(dto.getId())).willReturn(userReservation);
 
         // when
@@ -140,7 +139,7 @@ class ReservationServiceTest {
     @Test
     void givenNoneExistentReservationInfo_whenUpdatingReservation_thenLogsWarningAndDoesNothing() {
         // Given
-        UserReservationDto dto = createUserReservationDto("동탄소아과", "소아 진료", "접수 완료");
+        ReservationDto dto = createUserReservationDto("동탄소아과", "소아 진료", "접수 완료");
         given(userReservationRepository.getReferenceById(dto.getId())).willThrow(EntityNotFoundException.class);
 
         // When
@@ -185,12 +184,12 @@ class ReservationServiceTest {
         );
     }
 
-    private UserReservationDto createUserReservationDto() {
+    private ReservationDto createUserReservationDto() {
         return createUserReservationDto("강남소아과", "영유아 검진", "접수 대기");
     }
 
-    private UserReservationDto createUserReservationDto(String hospitalName, String txList, String reservationStatus) {
-        return UserReservationDto.of(
+    private ReservationDto createUserReservationDto(String hospitalName, String txList, String reservationStatus) {
+        return ReservationDto.of(
                 1L,
                 hospitalName,
                 txList,
