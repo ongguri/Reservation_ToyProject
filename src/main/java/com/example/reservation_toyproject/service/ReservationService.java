@@ -3,7 +3,7 @@ package com.example.reservation_toyproject.service;
 
 import com.example.reservation_toyproject.domain.UserReservation;
 import com.example.reservation_toyproject.domain.type.SearchType;
-import com.example.reservation_toyproject.dto.UserReservationDto;
+import com.example.reservation_toyproject.dto.ReservationDto;
 import com.example.reservation_toyproject.repository.UserReservationRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,44 +23,51 @@ public class ReservationService {
     private final UserReservationRepository userReservationRepository;
 
     @Transactional(readOnly = true)
-    public Page<UserReservationDto> searchUserReservation(SearchType searchType, String searchKeyword, Pageable pageable) {
+    public Page<ReservationDto> searchUserReservation(SearchType searchType, String searchKeyword, Pageable pageable) {
         if(searchKeyword == null || searchKeyword.isBlank()) {
-            return userReservationRepository.findAll(pageable).map(UserReservationDto::from);
+            return userReservationRepository.findAll(pageable).map(ReservationDto::from);
         }
 
         switch (searchType) {
             case USERNAME:
-                return userReservationRepository.findByUserAccount_Name(searchKeyword, pageable).map(UserReservationDto::from);
+                return userReservationRepository.findByUserAccount_Name(searchKeyword, pageable).map(
+                    ReservationDto::from);
             case EMAIL:
-                return userReservationRepository.findByUserAccount_EmailContaining(searchKeyword, pageable).map(UserReservationDto::from);
+                return userReservationRepository.findByUserAccount_EmailContaining(searchKeyword, pageable).map(
+                    ReservationDto::from);
             case PHONENUMBER:
-                return userReservationRepository.findByUserAccount_PhoneNumberContaining(searchKeyword, pageable).map(UserReservationDto::from);
+                return userReservationRepository.findByUserAccount_PhoneNumberContaining(searchKeyword, pageable).map(
+                    ReservationDto::from);
             case BIRTHDAY:
-                return userReservationRepository.findByUserAccount_BirthdayContaining(searchKeyword, pageable).map(UserReservationDto::from);
+                return userReservationRepository.findByUserAccount_BirthdayContaining(searchKeyword, pageable).map(
+                    ReservationDto::from);
             case HOSPITALNAME:
-                return userReservationRepository.findByHospitalNameContaining(searchKeyword, pageable).map(UserReservationDto::from);
+                return userReservationRepository.findByHospitalNameContaining(searchKeyword, pageable).map(
+                    ReservationDto::from);
             case TXLIST:
-                return userReservationRepository.findByTxListContaining(searchKeyword, pageable).map(UserReservationDto::from);
+                return userReservationRepository.findByTxListContaining(searchKeyword, pageable).map(
+                    ReservationDto::from);
             case RESERVATIONSTATUS:
-                return userReservationRepository.findByReservationStatusContaining(searchKeyword, pageable).map(UserReservationDto::from);
+                return userReservationRepository.findByReservationStatusContaining(searchKeyword, pageable).map(
+                    ReservationDto::from);
         }
 
         return Page.empty();
     }
 
     @Transactional(readOnly = true)
-    public UserReservationDto getUserReservation(long userReservationId) {
+    public ReservationDto getUserReservation(long userReservationId) {
         return userReservationRepository.findById(userReservationId)
-                .map(UserReservationDto::from)
+                .map(ReservationDto::from)
                 .orElseThrow(() -> new EntityNotFoundException("예약 정보가 없습니다 - userReservationId: " + userReservationId));
     }  // 파라미터를 찍음으로써 로그에 불필요한 내부 데이터가 노출되는데,
     // 이는 운영 및 빠른 로그 분석을 위함.
 
-    public void saveUserReservation(UserReservationDto dto) {
+    public void saveUserReservation(ReservationDto dto) {
         userReservationRepository.save(dto.toEntity());
     }
 
-    public void updateUserReservation(UserReservationDto dto) {
+    public void updateUserReservation(ReservationDto dto) {
         try {
             UserReservation userReservation = userReservationRepository.getReferenceById(dto.getId());
             if(dto.getHospitalName() != null) {

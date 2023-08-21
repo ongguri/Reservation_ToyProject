@@ -1,6 +1,7 @@
 package com.example.reservation_toyproject.dto;
 
 
+import com.example.reservation_toyproject.domain.HospitalReception;
 import com.example.reservation_toyproject.domain.UserReservation;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,7 +9,7 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 
 @Setter @Getter
-public class UserReservationDto {
+public class ReservationDto {
 
     private Long id;
     private String hospitalName;
@@ -18,10 +19,10 @@ public class UserReservationDto {
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
 
-    protected UserReservationDto() {
+    protected ReservationDto() {
     }
 
-    private UserReservationDto(Long id, String hospitalName, String txList, String reservationStatus,
+    private ReservationDto(Long id, String hospitalName, String txList, String reservationStatus,
                               UserAccountDto userAccountDto, LocalDateTime createdAt, LocalDateTime modifiedAt) {
         this.id = id;
         this.hospitalName = hospitalName;
@@ -32,13 +33,13 @@ public class UserReservationDto {
         this.modifiedAt = modifiedAt;
     }
 
-    public static UserReservationDto of(Long id, String hospitalName, String txList, String reservationStatus,
+    public static ReservationDto of(Long id, String hospitalName, String txList, String reservationStatus,
                                UserAccountDto userAccountDto, LocalDateTime createdAt, LocalDateTime modifiedAt) {
-        return new UserReservationDto(id, hospitalName, txList, reservationStatus, userAccountDto, createdAt, modifiedAt);
+        return new ReservationDto(id, hospitalName, txList, reservationStatus, userAccountDto, createdAt, modifiedAt);
     }
 
-    public static UserReservationDto from(UserReservation entity) {
-        return new UserReservationDto(
+    public static ReservationDto from(UserReservation entity) {
+        return new ReservationDto(
                 entity.getId(),
                 entity.getHospitalName(),
                 entity.getTxList(),
@@ -48,7 +49,6 @@ public class UserReservationDto {
                 entity.getModifiedAt()
         );
     }
-
     public UserReservation toEntity() {
         return UserReservation.of(
                 userAccountDto.toEntity(),
