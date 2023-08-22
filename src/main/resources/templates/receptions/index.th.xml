@@ -3,4 +3,16 @@
 <thlogic>
     <attr sel="#header" th:replace="header :: header" />
     <attr sel="#footer" th:replace="footer :: footer" />
+
+    <attr sel="#hospitalReception-table">
+        <attr sel="tbody" th:remove="all-but-first">
+            <attr sel="tr[0]" th:each="reception : ${receptions}">
+                <attr sel="td.name" th:text="${reception.name}" />
+                <attr sel="td.phone-number" th:text="${reception.phoneNumber}" />
+                <attr sel="td.tx-list" th:text="${reception.txList}" />
+                <attr sel="td.created-at/time" th:datetime="${reception.createdAt}" th:text="${#temporals.format(reception.createdAt, 'yyyy-MM-dd')}" />
+                <attr sel="td.reservation-status" th:text="${reception.reservationStatus}" />
+            </attr>
+        </attr>
+    </attr>
 </thlogic>
