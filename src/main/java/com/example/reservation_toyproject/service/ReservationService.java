@@ -1,6 +1,5 @@
 package com.example.reservation_toyproject.service;
 
-
 import com.example.reservation_toyproject.domain.UserReservation;
 import com.example.reservation_toyproject.domain.type.SearchType;
 import com.example.reservation_toyproject.dto.ReservationDto;

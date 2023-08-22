@@ -1,6 +1,5 @@
 package com.example.reservation_toyproject.dto;
 
-
 import com.example.reservation_toyproject.domain.HospitalReception;
 import com.example.reservation_toyproject.domain.UserReservation;
 import lombok.Getter;

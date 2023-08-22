@@ -1,6 +1,5 @@
 package com.example.reservation_toyproject.domain;
 
-import java.time.LocalDateTime;
 import javax.persistence.*;
 
 import lombok.Getter;
