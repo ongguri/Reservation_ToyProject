@@ -49,6 +49,19 @@ public class ReservationDto {
                 entity.getModifiedAt()
         );
     }
+
+    public static ReservationDto from(HospitalReception entity) {
+        return new ReservationDto(
+            entity.getId(),
+            entity.getUserReservation().getHospitalName(),
+            entity.getUserReservation().getTxList(),
+            entity.getUserReservation().getReservationStatus(),
+            UserAccountDto.from(entity.getUserAccount()),
+            entity.getUserReservation().getCreatedAt(),
+            entity.getUserReservation().getModifiedAt()
+        );
+    }
+
     public UserReservation toEntity() {
         return UserReservation.of(
                 userAccountDto.toEntity(),
