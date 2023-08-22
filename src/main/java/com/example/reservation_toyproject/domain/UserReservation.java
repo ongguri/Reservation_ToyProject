@@ -1,6 +1,5 @@
 package com.example.reservation_toyproject.domain;
 
-import java.time.LocalDateTime;
 import javax.persistence.*;
 
 import lombok.Getter;
@@ -22,7 +21,7 @@ public class UserReservation extends AuditingFields {
 
     @Setter @Column(nullable = false) private String hospitalName;
     @Setter @Column(nullable = false) private String txList;
-    @Setter @Column(nullable = false) private String reservationStatus;
+    @Setter @Column private String reservationStatus;
 
     @Setter @ManyToOne(optional = false) private UserAccount userAccount;
     @Setter @OneToOne(mappedBy = "userReservation", cascade = CascadeType.ALL) private HospitalReception hospitalReception;

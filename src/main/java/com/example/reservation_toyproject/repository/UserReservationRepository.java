@@ -8,9 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface UserReservationRepository extends JpaRepository<UserReservation, Long> {
 
     Page<UserReservation> findByUserAccount_Name(String name, Pageable pageable);
-    Page<UserReservation> findByUserAccount_EmailContaining(String email, Pageable pageable);
-    Page<UserReservation> findByUserAccount_PhoneNumberContaining(String phoneNumber, Pageable pageable);
-    Page<UserReservation> findByUserAccount_BirthdayContaining(String birthday, Pageable pageable);
     Page<UserReservation> findByHospitalNameContaining(String hospitalName, Pageable pageable);
     Page<UserReservation> findByTxListContaining(String txList, Pageable pageable);
     Page<UserReservation> findByReservationStatusContaining(String reservationStatus, Pageable pageable);

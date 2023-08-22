@@ -1,13 +1,20 @@
 package com.example.reservation_toyproject.controller;
 
-
+import com.example.reservation_toyproject.service.ReservationService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.then;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
@@ -18,6 +25,9 @@ public class UserReservationControllerTest {
 
     private final MockMvc mvc;
 
+    @MockBean
+    private ReservationService reservationService;
+
     public UserReservationControllerTest(@Autowired MockMvc mvc) {
         this.mvc = mvc;
     }
@@ -26,6 +36,8 @@ public class UserReservationControllerTest {
     @Test
     public void givenNothing_whenRequestingReservationsView_thenReturnsReservationsView() throws Exception {
         // Given
+        given(reservationService.searchUserReservation(eq(null), eq(null), any(Pageable.class))).willReturn(
+            Page.empty());
 
         // When & Then
         mvc.perform(get("/reservations"))
@@ -33,5 +45,6 @@ public class UserReservationControllerTest {
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
                 .andExpect(view().name("reservations/index"))
                 .andExpect(model().attributeExists("reservations"));
+        then(reservationService).should().searchUserReservation(eq(null), eq(null), any(Pageable.class));
     }
 }

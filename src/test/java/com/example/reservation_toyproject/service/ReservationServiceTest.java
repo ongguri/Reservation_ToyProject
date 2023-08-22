@@ -32,7 +32,6 @@ class ReservationServiceTest {
     @InjectMocks private ReservationService sut;
 
     @Mock private UserReservationRepository userReservationRepository;
-    @Mock private HospitalReceptionRepository hospitalReceptionRepository;
 
     @DisplayName("검색 없이 예약정보를 검색하면, 예약 조회 페이지를 반환한다.")
     @Test
@@ -53,17 +52,17 @@ class ReservationServiceTest {
     @Test
     void givenSearchParameters_whenSearchingReservations_thenReturnReservationPage() {
         // Given
-        SearchType searchType = SearchType.EMAIL;
-        String searchKeyword = "kang@mail.com";
+        SearchType searchType = SearchType.USERNAME;
+        String searchKeyword = "김용선";
         Pageable pageable = Pageable.ofSize(20);
-        given(userReservationRepository.findByUserAccount_EmailContaining(searchKeyword, pageable)).willReturn(Page.empty());
+        given(userReservationRepository.findByUserAccount_Name(searchKeyword, pageable)).willReturn(Page.empty());
 
         // When
         Page<ReservationDto> userReservation = sut.searchUserReservation(searchType, searchKeyword, pageable);
 
         // Then
         assertThat(userReservation).isEmpty();
-        then(userReservationRepository).should().findByUserAccount_EmailContaining(searchKeyword, pageable);
+        then(userReservationRepository).should().findByUserAccount_Name(searchKeyword, pageable);
     }
 
     @DisplayName("예약 정보를 조회하면, 예약 정보를 반환한다.")
@@ -168,7 +167,7 @@ class ReservationServiceTest {
         return UserAccount.of(
                 "rkd@naver.com",
                 "2984",
-                "강선용",
+                "김용선",
                 "010-1234-9999",
                 "1996-12-34",
                 "mail"

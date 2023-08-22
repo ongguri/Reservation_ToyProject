@@ -1,6 +1,5 @@
 package com.example.reservation_toyproject.dto;
 
-
 import com.example.reservation_toyproject.domain.UserAccount;
 import lombok.Getter;
 import lombok.Setter;

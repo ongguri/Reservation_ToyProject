@@ -1,6 +1,5 @@
 package com.example.reservation_toyproject.service;
 
-
 import com.example.reservation_toyproject.domain.UserReservation;
 import com.example.reservation_toyproject.domain.type.SearchType;
 import com.example.reservation_toyproject.dto.ReservationDto;
@@ -31,15 +30,6 @@ public class ReservationService {
         switch (searchType) {
             case USERNAME:
                 return userReservationRepository.findByUserAccount_Name(searchKeyword, pageable).map(
-                    ReservationDto::from);
-            case EMAIL:
-                return userReservationRepository.findByUserAccount_EmailContaining(searchKeyword, pageable).map(
-                    ReservationDto::from);
-            case PHONENUMBER:
-                return userReservationRepository.findByUserAccount_PhoneNumberContaining(searchKeyword, pageable).map(
-                    ReservationDto::from);
-            case BIRTHDAY:
-                return userReservationRepository.findByUserAccount_BirthdayContaining(searchKeyword, pageable).map(
                     ReservationDto::from);
             case HOSPITALNAME:
                 return userReservationRepository.findByHospitalNameContaining(searchKeyword, pageable).map(
