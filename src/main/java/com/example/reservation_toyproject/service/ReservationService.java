@@ -32,15 +32,6 @@ public class ReservationService {
             case USERNAME:
                 return userReservationRepository.findByUserAccount_Name(searchKeyword, pageable).map(
                     ReservationDto::from);
-            case EMAIL:
-                return userReservationRepository.findByUserAccount_EmailContaining(searchKeyword, pageable).map(
-                    ReservationDto::from);
-            case PHONENUMBER:
-                return userReservationRepository.findByUserAccount_PhoneNumberContaining(searchKeyword, pageable).map(
-                    ReservationDto::from);
-            case BIRTHDAY:
-                return userReservationRepository.findByUserAccount_BirthdayContaining(searchKeyword, pageable).map(
-                    ReservationDto::from);
             case HOSPITALNAME:
                 return userReservationRepository.findByHospitalNameContaining(searchKeyword, pageable).map(
                     ReservationDto::from);
