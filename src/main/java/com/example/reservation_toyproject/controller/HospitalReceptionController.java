@@ -29,7 +29,7 @@ public class HospitalReceptionController {
     public String receptions(
         @RequestParam(required = false) SearchType searchType,
         @RequestParam(required = false) String searchValue,
-        @PageableDefault(size = 15) Pageable pageable,
+        @PageableDefault(size = 5) Pageable pageable,
         ModelMap map
     ) {
         Page<HospitalReceptionResponse> receptions = receptionService.searchHospitalReception(

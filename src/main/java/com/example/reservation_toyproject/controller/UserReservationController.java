@@ -30,7 +30,7 @@ public class UserReservationController {
     public String reservations(
         @RequestParam(required = false) SearchType searchType,
         @RequestParam(required = false) String searchValue,
-        @PageableDefault(size = 15, sort = "createdAt", direction = Direction.DESC) Pageable pageable,
+        @PageableDefault(size = 5, sort = "createdAt", direction = Direction.DESC) Pageable pageable,
         ModelMap map
     ) {
         Page<UserReservationResponse> reservations = reservationService.searchUserReservation(
