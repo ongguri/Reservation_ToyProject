@@ -1,18 +1,64 @@
 <?xml version="1.0"?>
 
 <thlogic>
-    <attr sel="#header" th:replace="header :: header" />
-    <attr sel="#footer" th:replace="footer :: footer" />
+    <attr sel="#header" th:replace="header :: header"/>
+    <attr sel="#footer" th:replace="footer :: footer"/>
 
-    <attr sel="#hospitalReception-table">
-        <attr sel="tbody" th:remove="all-but-first">
-            <attr sel="tr[0]" th:each="reception : ${receptions}">
-                <attr sel="td.name" th:text="${reception.name}" />
-                <attr sel="td.phone-number" th:text="${reception.phoneNumber}" />
-                <attr sel="td.tx-list" th:text="${reception.txList}" />
-                <attr sel="td.created-at/time" th:datetime="${reception.createdAt}" th:text="${#temporals.format(reception.createdAt, 'yyyy-MM-dd')}" />
-                <attr sel="td.reservation-status" th:text="${reception.reservationStatus}" />
+    <attr sel="main" th:object="${receptions}">
+        <attr sel="#hospitalReception-table">
+            <attr sel="thead/tr">
+                <attr sel="th.name/a" th:text="'환자명'" th:href="@{/receptions(
+            page=${receptions.number},
+            sort='userAccount.name' + (*{sort.getOrderFor('userAccount.name')} != null ? (*{sort.getOrderFor('userAccount.name').direction.name} != 'DESC' ? ',desc' : '') : '')
+        )}"/>
+                <attr sel="th.phone-number/a" th:text="'환자 연락처'" th:href="@{/receptions(
+            page=${receptions.number},
+            sort='userAccount.phoneNumber' + (*{sort.getOrderFor('userAccount.phoneNumber')} != null ? (*{sort.getOrderFor('userAccount.phoneNumber').direction.name} != 'DESC' ? ',desc' : '') : '')
+        )}"/>
+                <attr sel="th.tx-list/a" th:text="'진료 항목'" th:href="@{/receptions(
+            page=${receptions.number},
+            sort='userReservation.txList' + (*{sort.getOrderFor('userReservation.txList')} != null ? (*{sort.getOrderFor('userReservation.txList').direction.name} != 'DESC' ? ',desc' : '') : '')
+        )}"/>
+                <attr sel="th.created-at/a" th:text="'접수 시간'" th:href="@{/receptions(
+            page=${receptions.number},
+            sort='userReservation.createdAt' + (*{sort.getOrderFor('userReservation.createdAt')} != null ? (*{sort.getOrderFor('userReservation.createdAt').direction.name} != 'DESC' ? ',desc' : '') : '')
+        )}"/>
+                <attr sel="th.reservation-status/a" th:text="'접수 상태'" th:href="@{/receptions(
+            page=${receptions.number},
+            sort='userReservation.reservationStatus' + (*{sort.getOrderFor('userReservation.reservationStatus')} != null ? (*{sort.getOrderFor('userReservation.reservationStatus').direction.name} != 'DESC' ? ',desc' : '') : '')
+        )}"/>
             </attr>
+
+            <attr sel="tbody" th:remove="all-but-first">
+                <attr sel="tr[0]" th:each="reception : ${receptions}">
+                    <attr sel="td.name" th:text="${reception.name}"/>
+                    <attr sel="td.phone-number" th:text="${reception.phoneNumber}"/>
+                    <attr sel="td.tx-list" th:text="${reception.txList}"/>
+                    <attr sel="td.created-at/time" th:datetime="${reception.createdAt}"
+                          th:text="${#temporals.format(reception.createdAt, 'yyyy-MM-dd')}"/>
+                    <attr sel="td.reservation-status" th:text="${reception.reservationStatus}"/>
+                </attr>
+            </attr>
+        </attr>
+
+        <attr sel="#pagination">
+            <attr sel="li[0]/a"
+                  th:text="'previous'"
+                  th:href="@{/receptions(page=${receptions.number - 1})}"
+                  th:class="'page-link' + (${receptions.number} <= 0 ? ' disabled' : '')"
+            />
+            <attr sel="li[1]" th:class="page-item" th:each="pageNumber : ${paginationBarNumbers}">
+                <attr sel="a"
+                      th:text="${pageNumber + 1}"
+                      th:href="@{/receptions(page=${pageNumber})}"
+                      th:class="'page-link' + (${pageNumber} == ${receptions.number} ? ' disabled' : '')"
+                />
+            </attr>
+            <attr sel="li[2]/a"
+                  th:text="'next'"
+                  th:href="@{/receptions(page=${receptions.number + 1})}"
+                  th:class="'page-link' + (${receptions.number} >= ${receptions.totalPages - 1} ? ' disabled' : '')"
+            />
         </attr>
     </attr>
 </thlogic>
