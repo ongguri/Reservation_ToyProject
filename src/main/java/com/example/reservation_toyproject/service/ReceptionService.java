@@ -1,6 +1,6 @@
 package com.example.reservation_toyproject.service;
 
-import com.example.reservation_toyproject.domain.type.SearchType;
+import com.example.reservation_toyproject.domain.type.ReceptionSearchType;
 import com.example.reservation_toyproject.dto.ReservationDto;
 import com.example.reservation_toyproject.repository.HospitalReceptionRepository;
 import javax.persistence.EntityNotFoundException;
@@ -20,12 +20,12 @@ public class ReceptionService {
     private final HospitalReceptionRepository hospitalReceptionRepository;
 
     @Transactional(readOnly = true)
-    public Page<ReservationDto> searchHospitalReception(SearchType searchType, String searchKeyword, Pageable pageable) {
+    public Page<ReservationDto> searchHospitalReception(ReceptionSearchType receptionSearchType, String searchKeyword, Pageable pageable) {
         if(searchKeyword == null || searchKeyword.isBlank()) {
             return hospitalReceptionRepository.findAll(pageable).map(ReservationDto::from);
         }
 
-        switch (searchType) {
+        switch (receptionSearchType) {
             case USERNAME:
                 return hospitalReceptionRepository.findByUserAccount_Name(searchKeyword, pageable).map(
                     ReservationDto::from);

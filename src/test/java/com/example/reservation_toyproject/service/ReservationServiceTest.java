@@ -2,10 +2,9 @@ package com.example.reservation_toyproject.service;
 
 import com.example.reservation_toyproject.domain.UserAccount;
 import com.example.reservation_toyproject.domain.UserReservation;
-import com.example.reservation_toyproject.domain.type.SearchType;
+import com.example.reservation_toyproject.domain.type.ReservationSearchType;
 import com.example.reservation_toyproject.dto.UserAccountDto;
 import com.example.reservation_toyproject.dto.ReservationDto;
-import com.example.reservation_toyproject.repository.HospitalReceptionRepository;
 import com.example.reservation_toyproject.repository.UserReservationRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -52,13 +51,13 @@ class ReservationServiceTest {
     @Test
     void givenSearchParameters_whenSearchingReservations_thenReturnReservationPage() {
         // Given
-        SearchType searchType = SearchType.USERNAME;
+        ReservationSearchType reservationSearchType = ReservationSearchType.USERNAME;
         String searchKeyword = "김용선";
         Pageable pageable = Pageable.ofSize(20);
         given(userReservationRepository.findByUserAccount_Name(searchKeyword, pageable)).willReturn(Page.empty());
 
         // When
-        Page<ReservationDto> userReservation = sut.searchUserReservation(searchType, searchKeyword, pageable);
+        Page<ReservationDto> userReservation = sut.searchUserReservation(reservationSearchType, searchKeyword, pageable);
 
         // Then
         assertThat(userReservation).isEmpty();

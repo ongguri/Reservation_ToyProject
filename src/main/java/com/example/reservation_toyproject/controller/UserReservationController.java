@@ -1,6 +1,6 @@
 package com.example.reservation_toyproject.controller;
 
-import com.example.reservation_toyproject.domain.type.SearchType;
+import com.example.reservation_toyproject.domain.type.ReservationSearchType;
 import com.example.reservation_toyproject.response.UserReservationResponse;
 import com.example.reservation_toyproject.service.PaginationService;
 import com.example.reservation_toyproject.service.ReservationService;
@@ -28,17 +28,18 @@ public class UserReservationController {
 
     @GetMapping
     public String reservations(
-        @RequestParam(required = false) SearchType searchType,
+        @RequestParam(required = false) ReservationSearchType reservationSearchType,
         @RequestParam(required = false) String searchValue,
         @PageableDefault(size = 5, sort = "createdAt", direction = Direction.DESC) Pageable pageable,
         ModelMap map
     ) {
         Page<UserReservationResponse> reservations = reservationService.searchUserReservation(
-                searchType, searchValue, pageable).map(UserReservationResponse::from);
+                reservationSearchType, searchValue, pageable).map(UserReservationResponse::from);
         List<Integer> barNumbers = paginationService.getPaginationBarNumbers(pageable.getPageNumber(), reservations.getTotalPages());
 
         map.addAttribute("reservations", reservations);
         map.addAttribute("paginationBarNumbers", barNumbers);
+        map.addAttribute("reservationSearchTypes", ReservationSearchType.values());
 
         return "reservations/index";
     }
