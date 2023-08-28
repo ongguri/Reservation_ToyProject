@@ -1,7 +1,7 @@
 package com.example.reservation_toyproject.service;
 
 import com.example.reservation_toyproject.domain.UserReservation;
-import com.example.reservation_toyproject.domain.type.SearchType;
+import com.example.reservation_toyproject.domain.type.ReservationSearchType;
 import com.example.reservation_toyproject.dto.ReservationDto;
 import com.example.reservation_toyproject.repository.UserReservationRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,12 +22,12 @@ public class ReservationService {
     private final UserReservationRepository userReservationRepository;
 
     @Transactional(readOnly = true)
-    public Page<ReservationDto> searchUserReservation(SearchType searchType, String searchKeyword, Pageable pageable) {
+    public Page<ReservationDto> searchUserReservation(ReservationSearchType reservationSearchType, String searchKeyword, Pageable pageable) {
         if(searchKeyword == null || searchKeyword.isBlank()) {
             return userReservationRepository.findAll(pageable).map(ReservationDto::from);
         }
 
-        switch (searchType) {
+        switch (reservationSearchType) {
             case USERNAME:
                 return userReservationRepository.findByUserAccount_Name(searchKeyword, pageable).map(
                     ReservationDto::from);

@@ -17,15 +17,15 @@
         <div class="row">
             <div class="card card-margin search-form">
                 <div class="card-body p-0">
-                    <form id="card search-form">
+                    <form action="/receptions" method="get">
                         <div class="row">
                             <div class="col-12">
                                 <div class="row no-gutters">
                                     <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                                         <label for="search-type" hidden>검색 유형</label>
-                                        <select class="form-control" id="search-type">
+                                        <select class="form-control" id="search-type" name="receptionSearchType">
                                             <option>환자명</option>
-                                            <option>환자 번호</option>
+                                            <option>환자 연락처</option>
                                             <option>진료 항목</option>
                                             <option>접수 시간</option>
                                             <option>접수 상태</option>
@@ -33,7 +33,7 @@
                                     </div>
                                     <div class="col-lg-8 col-md-6 col-sm-12 p-0">
                                         <label for="search-value" hidden>검색어</label>
-                                        <input type="text" placeholder="검색어..." class="form-control" id="search-value" name="search-value">
+                                        <input type="text" placeholder="검색어..." class="form-control" id="search-value" name="searchValue">
                                     </div>
                                     <div class="col-lg-1 col-md-3 col-sm-12 p-0">
                                         <button type="submit" class="btn btn-base">
