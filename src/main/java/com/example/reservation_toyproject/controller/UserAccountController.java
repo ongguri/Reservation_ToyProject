@@ -35,4 +35,14 @@ public class UserAccountController {
 
         return "redirect:/sign";
     }
+
+    @PostMapping("/login")
+    public String checkLogin(UserAccountRequest userAccountRequest) {
+        UserAccountDto dto = userAccountRequest.toDto();
+        if(userAccountService.authenticateUser(dto)) {
+            return "redirect:/reservations";
+        }
+
+        return "sign/sign-in";
+    }
 }
