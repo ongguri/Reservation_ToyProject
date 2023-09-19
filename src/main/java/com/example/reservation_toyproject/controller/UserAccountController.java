@@ -1,13 +1,20 @@
 package com.example.reservation_toyproject.controller;
 
+import com.example.reservation_toyproject.dto.UserAccountDto;
+import com.example.reservation_toyproject.dto.request.UserAccountRequest;
+import com.example.reservation_toyproject.service.UserAccountService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+@RequiredArgsConstructor
 @RequestMapping("/sign")
 @Controller
-public class UserLoginController {
+public class UserAccountController {
+
+    private final UserAccountService userAccountService;
 
     @GetMapping
     public String signInPage() {
@@ -22,7 +29,9 @@ public class UserLoginController {
     }
 
     @PostMapping("/create-account")
-    public String createAccount() {
+    public String createAccount(UserAccountRequest userAccountRequest) {
+
+        userAccountService.saveUserAccount(userAccountRequest.toDto());
 
         return "redirect:/sign";
     }

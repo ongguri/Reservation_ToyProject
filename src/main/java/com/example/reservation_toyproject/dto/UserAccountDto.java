@@ -33,6 +33,10 @@ public class UserAccountDto {
         this.modifiedAt = modifiedAt;
     }
 
+    public static UserAccountDto of(String email, String password, String name, String phoneNumber, String birthday, String gender) {
+        return new UserAccountDto(email, password, name, phoneNumber, birthday, gender, null, null);
+    }
+
     public static UserAccountDto of(String email, String password, String name, String phoneNumber, String birthday, String gender,
                              LocalDateTime createdAt, LocalDateTime modifiedAt) {
         return new UserAccountDto(email, password, name, phoneNumber, birthday, gender, createdAt, modifiedAt);
