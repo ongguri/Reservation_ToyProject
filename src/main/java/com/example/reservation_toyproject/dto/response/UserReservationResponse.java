@@ -1,4 +1,4 @@
-package com.example.reservation_toyproject.response;
+package com.example.reservation_toyproject.dto.response;
 
 import com.example.reservation_toyproject.dto.ReservationDto;
 import java.time.LocalDateTime;

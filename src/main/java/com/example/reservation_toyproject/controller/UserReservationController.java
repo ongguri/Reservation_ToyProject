@@ -1,7 +1,7 @@
 package com.example.reservation_toyproject.controller;
 
 import com.example.reservation_toyproject.domain.type.ReservationSearchType;
-import com.example.reservation_toyproject.response.UserReservationResponse;
+import com.example.reservation_toyproject.dto.response.UserReservationResponse;
 import com.example.reservation_toyproject.service.PaginationService;
 import com.example.reservation_toyproject.service.ReservationService;
 import lombok.RequiredArgsConstructor;
