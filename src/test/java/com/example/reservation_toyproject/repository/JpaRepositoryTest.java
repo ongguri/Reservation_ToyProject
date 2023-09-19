@@ -63,8 +63,8 @@ public class JpaRepositoryTest {
     @Test
     void givenTestData_whenUpdating_thenWorksFine() {
         //Given
-        List<UserAccount> userAccounts = userAccountRepository.findByEmail("kiwanczyk0@upenn.edu");
-        UserAccount userAccount = userAccounts.get(0);
+        UserAccount userAccount = userAccountRepository.findByEmail("kiwanczyk0@upenn.edu");
+
         String updatedName = "kangSunYong";
         userAccount.setName(updatedName);
 
@@ -79,8 +79,8 @@ public class JpaRepositoryTest {
     @Test
     void givenTestData_whenDeleting_thenWorksFine() {
         //Given
-        List<UserAccount> userAccounts = userAccountRepository.findByEmail("kiwanczyk0@upenn.edu");
-        UserAccount userAccount = userAccounts.get(0);
+        UserAccount userAccount = userAccountRepository.findByEmail("kiwanczyk0@upenn.edu");
+
         long previousUserAccountCount = userAccountRepository.count();
         long previousUserReservationCount = userReservationRepository.count();
         int deletedReservationSize = userAccount.getUserReservations().size();
