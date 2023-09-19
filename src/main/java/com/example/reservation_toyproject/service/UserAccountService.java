@@ -1,6 +1,7 @@
 package com.example.reservation_toyproject.service;
 
 
+import com.example.reservation_toyproject.domain.UserAccount;
 import com.example.reservation_toyproject.dto.UserAccountDto;
 import com.example.reservation_toyproject.repository.UserAccountRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,4 +19,13 @@ public class UserAccountService {
         userAccountRepository.save(dto.toEntity());
     }
 
+    public boolean authenticateUser(UserAccountDto dto) {
+        UserAccount user = userAccountRepository.findByEmail(dto.getEmail());
+
+        if(user != null && user.getPassword().equals(dto.getPassword())) {
+            return true;
+        }
+
+        return false;
+    }
 }
